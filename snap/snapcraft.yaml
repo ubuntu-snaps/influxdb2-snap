@@ -20,8 +20,12 @@ apps:
 parts:
   influxdb:
     plugin: go
-    source: https://github.com/influxdata/influxdb/archive/refs/tags/v2.7.12.tar.gz
-    source-type: tar
+    source: https://github.com/influxdata/influxdb.git
+    source-tag: v2.7.12
+    # build-environment:
+    #   - GOPROXY: https://proxy.golang.com.cn,direct
+    build-snaps:
+      - go
     override-stage: |
       craftctl default
       craftctl set version="$(craftctl get version)+git$(git rev-parse --short HEAD)"
