@@ -13,19 +13,16 @@ platforms:
 
 apps:
   influxd:
-    command: bin/influxd
+    command: usr/bin/influxd
     daemon: simple
     plugs: [network, network-bind]
 
 parts:
   influxdb:
-    plugin: go
-    source: https://github.com/influxdata/influxdb.git
-    source-tag: v2.7.12
-    # build-environment:
-    #   - GOPROXY: https://proxy.golang.com.cn,direct
-    build-snaps:
-      - go
+    plugin: dump
+    source: https://dl.influxdata.com/influxdb/releases/v2.7.12/influxdb2-2.7.12_linux_amd64.tar.gz
+    source-type: tar
+    source-subdir: influxdb2-2.7.12
     override-stage: |
       craftctl default
       craftctl set version="$(craftctl get version)+git$(git rev-parse --short HEAD)"
