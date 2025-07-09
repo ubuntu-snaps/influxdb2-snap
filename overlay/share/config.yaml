@@ -1,0 +1,2 @@
+bolt-path: /var/snap/influxdb2/common/data/influxd.bolt
+engine-path: /var/snap/influxdb2/common/data/engine

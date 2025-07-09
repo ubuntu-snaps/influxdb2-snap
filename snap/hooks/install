@@ -1,0 +1,7 @@
+#!/bin/sh -e
+if [ ! -d $SNAP_COMMON/data ]; then
+    cp -r $SNAP/share/data $SNAP_COMMON/
+fi
+if [ ! -f $SNAP_COMMON/config.yaml ]; then
+    cp $SNAP/share/config.yaml $SNAP_COMMON/
+fi
