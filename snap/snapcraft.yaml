@@ -1,0 +1,27 @@
+name: influxdb2
+summary: InfluxDB Time Series Database
+description: InfluxDB Time Series Database
+version: "2.7.12"
+adopt-info: overlay
+
+base: core24
+grade: devel
+confinement: devmode
+
+platforms:
+  amd64:
+
+apps:
+  influxd:
+    command: bin/influxd
+    daemon: simple
+    plugs: [network, network-bind]
+
+parts:
+  influxdb:
+    plugin: go
+    source: https://github.com/influxdata/influxdb/archive/refs/tags/v2.7.12.tar.gz
+    source-type: tar
+    override-stage: |
+      craftctl default
+      craftctl set version="$(craftctl get version)+git$(git rev-parse --short HEAD)"
