@@ -21,7 +21,6 @@ parts:
   influxdb:
     plugin: dump
     source: https://dl.influxdata.com/influxdb/releases/v2.7.12/influxdb2-2.7.12_linux_amd64.tar.gz
-    source-subdir: influxdb2-2.7.12
     override-stage: |
       craftctl default
       craftctl set version="$(craftctl get version)+git$(git rev-parse --short HEAD)"
